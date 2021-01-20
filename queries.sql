@@ -387,4 +387,40 @@ INSERT 0 1
 | 2    | 1         | 2           | 2               |
 +------+-----------+-------------+-----------------+
 
+Given a building, return all employees that work in that building:
+
+SELECT * FROM "Employees" JOIN "Departments" ON "Employees"."DepartmentId" = "Departments"."Id" WHERE
+ "Departments"."Building" = 'North Side';
+
++------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------+
+| FullName   | Salary   | JobPosition   | PhoneExtension   | IsPartTime   | ParkingSpot   | DepartmentId   | Id   | DepartmentName   | Building   |
+|------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------|
++------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------+
+
+SELECT * FROM "Employees" JOIN "Departments" ON "Employees"."DepartmentId" = "Departments"."Id" WHERE "Departments"."Building" = 'East Si
+ de';
+
++------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------+
+| FullName   | Salary   | JobPosition   | PhoneExtension   | IsPartTime   | ParkingSpot   | DepartmentId   | Id   | DepartmentName   | Building   |
+|------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------|
++------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------+
+
+SELECT * FROM "Employees" JOIN "Departments" ON "Employees"."DepartmentId" = "Departments"."Id" WHERE "Departments"."Building" = 'Main';
+ 
++----------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------+
+| FullName       | Salary   | JobPosition   | PhoneExtension   | IsPartTime   | ParkingSpot   | DepartmentId   | Id   | DepartmentName   | Building   |
+|----------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------|
+| Tim Smith      | 40000    | Programmer    | 123              | False        | <null>        | 1              | 1    | Development      | Main       |
+| Barbara Ramsey | 80000    | Manager       | 234              | False        | <null>        | 1              | 1    | Development      | Main       |
++----------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------+
+
+SELECT * FROM "Employees" JOIN "Departments" ON "Employees"."DepartmentId" = "Departments"."Id" WHERE "Departments"."Building" = 'North';
+ 
++------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------+
+| FullName   | Salary   | JobPosition   | PhoneExtension   | IsPartTime   | ParkingSpot   | DepartmentId   | Id   | DepartmentName   | Building   |
+|------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------|
+| Tom Jones  | 32000    | Admin         | 456              | True         | <null>        | 2              | 2    | Marketing        | North      |
++------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------+
+
+
 
