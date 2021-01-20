@@ -434,12 +434,16 @@ SELECT * FROM "Orders" JOIN "ProductOrders" ON "ProductOrders"."OrderId" = "Orde
 
 Find the Quantity of the Flowbee Product from Order with the Order Number X529:
 
-SELECT "ProductOrders"."Id", "Orders"."OrderNumber", "Products"."Name", "ProductOrders"."OrderQuantity" FROM "Orders" JOIN "ProductOrders
- " ON "ProductOrders"."OrderId" = "Orders"."Id" JOIN "Products" ON "Products"."Id" = "ProductOrders"."ProductId" WHERE "Products"."Name" = 'Flowbee';
- 
-+------+---------------+---------+-----------------+
-| Id   | OrderNumber   | Name    | OrderQuantity   |
-|------+---------------+---------+-----------------|
-| 2    | X529          | Flowbee | 2               |
-+------+---------------+---------+-----------------+
+SELECT "ProductOrders"."OrderQuantity"
+  FROM "ProductOrders"
+  JOIN "Orders" ON "ProductOrders"."OrderId" = "Orders"."Id"
+  JOIN "Products" ON "ProductOrders"."ProductId" = "Products"."Id"
+  WHERE "Products"."Name" = 'Flowbee'
+    AND "Orders"."OrderNumber" = 'X529';
+    
++-----------------+
+| OrderQuantity   |
+|-----------------|
+| 2               |
++-----------------+
 
