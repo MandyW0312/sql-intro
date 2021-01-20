@@ -422,5 +422,15 @@ SELECT * FROM "Employees" JOIN "Departments" ON "Employees"."DepartmentId" = "De
 | Tom Jones  | 32000    | Admin         | 456              | True         | <null>        | 2              | 2    | Marketing        | North      |
 +------------+----------+---------------+------------------+--------------+---------------+----------------+------+------------------+------------+
 
+Find all the Orders that contain the Product Id of 2:
+
+SELECT * FROM "Orders" JOIN "ProductOrders" ON "ProductOrders"."OrderId" = "Orders"."Id" WHERE "ProductOrders"."ProductId" = 2;
+
++------+---------------+--------------+--------------------+------+-----------+-------------+-----------------+
+| Id   | OrderNumber   | DatePlaced   | Email              | Id   | OrderId   | ProductId   | OrderQuantity   |
+|------+---------------+--------------+--------------------+------+-----------+-------------+-----------------|
+| 1    | X529          | 2020-01-01   | person@example.com | 2    | 1         | 2           | 2               |
++------+---------------+--------------+--------------------+------+-----------+-------------+-----------------+
+
 
 
