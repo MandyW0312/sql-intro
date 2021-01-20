@@ -284,7 +284,7 @@ CREATE TABLE
 |------+---------------+--------------+---------|
 +------+---------------+--------------+---------+
 
-Add a table called ProductOrders:
+Add a Table called ProductOrders:
 
 CREATE TABLE "ProductOrders" ("Id" SERIAL PRIMARY KEY, "OrderId" INTEGER REFERENCES "Orders" ("Id"), "
  ProductId" INTEGER REFERENCES "Products" ("Id"), "OrderQuantity" INT);
@@ -294,4 +294,97 @@ CREATE TABLE
 | Id   | OrderId   | ProductId   | OrderQuantity   |
 |------+-----------+-------------+-----------------|
 +------+-----------+-------------+-----------------+
+
+
+Insert the following into Departments:
+
+INSERT INTO "Departments" ("DepartmentName", "Building") VALUES ('Development', 'Main');
+INSERT 0 1
+INSERT INTO "Departments" ("DepartmentName", "Building") VALUES ('Marketing', 'North');
+INSERT 0 1
+
++------+------------------+------------+
+| Id   | DepartmentName   | Building   |
+|------+------------------+------------|
+| 1    | Development      | Main       |
+| 2    | Marketing        | North      |
++------+------------------+------------+
+
+Insert the Following Employees: 
+
+INSERT INTO "Employees" ("FullName", "Salary", "JobPosition", "PhoneExtension", "IsPartTime", "Departm
+ entId") VALUES ('Tim Smith', 40000, 'Programmer', 123, False, 1);
+INSERT 0 1
+INSERT INTO "Employees" ("FullName", "Salary", "JobPosition", "PhoneExtension", "IsPartTime", "Departm
+ entId") VALUES ('Barbara Ramsey', 80000, 'Manager', 234, False, 1);
+INSERT 0 1
+INSERT INTO "Employees" ("FullName", "Salary", "JobPosition", "PhoneExtension", "IsPartTime", "Departm
+ entId") VALUES ('Tom Jones', 32000, 'Admin', 456, True, 2);
+INSERT 0 1
+
++----------------+----------+--------------------+------------------+--------------+---------------+----------------+
+| FullName       | Salary   | JobPosition        | PhoneExtension   | IsPartTime   | ParkingSpot   | DepartmentId   |
+|----------------+----------+--------------------+------------------+--------------+---------------+----------------|
+| Manic Mandy    | 450      | Software Developer | 4444             | True         | 4             | <null>         |
+| Crazy Carol    | 700      | Firefighter        | 3213             | False        | 1             | <null>         |
+| Dingbat Dan    | 500      | Librarian          | 4321             | False        | 2             | <null>         |
+| Funky Frank    | 900      | Doctor             | 5432             | False        | 3             | <null>         |
+| Jolly Jill     | 700      | Waiter             | 8765             | True         | 5             | <null>         |
+| Tiny Tim       | 600      | Grocery Manager    | 2598             | False        | 6             | <null>         |
+| Goofy Gary     | 500      | Cook               | 7654             | True         | 76            | <null>         |
+| Stinky Stan    | 600      | Writer             | 6543             | True         | 8             | <null>         |
+| Fancy Franny   | 800      | Pharmacist         | 9876             | False        | 9             | <null>         |
+| Nasty Nell     | 400      | Fitness Instructor | 1987             | True         | 10            | <null>         |
+| Lovely Lisa    | 400      | Salesperson        | 3699             | True         | 11            | <null>         |
+| Silly Susan    | 500      | Cook               | 2182             | True         | 12            | <null>         |
+| Tim Smith      | 40000    | Programmer         | 123              | False        | <null>        | 1              |
+| Barbara Ramsey | 80000    | Manager            | 234              | False        | <null>        | 1              |
+| Tom Jones      | 32000    | Admin              | 456              | True         | <null>        | 2              |
++----------------+----------+--------------------+------------------+--------------+---------------+----------------+
+
+Insert the following Products:
+
+INSERT INTO "Products" ("Price", "Name", "Description", "QuantityInStock") VALUES (12.45, 'Widget', 'T
+ he Original Widget', 100);
+INSERT 0 1
+INSERT INTO "Products" ("Price", "Name", "Description", "QuantityInStock") VALUES (99.99, 'Flowbee', '
+ Perfect for haircuts', 3);
+INSERT 0 1
+
++------+---------+---------+----------------------+-------------------+
+| Id   | Price   | Name    | Description          | QuantityInStock   |
+|------+---------+---------+----------------------+-------------------|
+| 1    | 12.45   | Widget  | The Original Widget  | 100               |
+| 2    | 99.99   | Flowbee | Perfect for haircuts | 3                 |
++------+---------+---------+----------------------+-------------------+
+
+Insert the New Order:
+
+INSERT INTO "Orders" ("OrderNumber", "DatePlaced", "Email") VALUES ('X529', '2020-01-01', 'person@exam
+ ple.com');
+INSERT 0 1
+
++------+---------------+--------------+--------------------+
+| Id   | OrderNumber   | DatePlaced   | Email              |
+|------+---------------+--------------+--------------------|
+| 1    | X529          | 2020-01-01   | person@example.com |
++------+---------------+--------------+--------------------+
+
+Add an Order Quantity of 3 for the Product Widget to the Order X529:
+
+INSERT INTO "ProductOrders" ("OrderId", "ProductId", "OrderQuantity") VALUES (1, 1, 3);
+INSERT 0 1
+
+Add an Order Quantity of 2 for the Product Flowbee to the Order X529:
+
+INSERT INTO "ProductOrders" ("OrderId", "ProductId", "OrderQuantity") VALUES (1, 2, 2);
+INSERT 0 1
+
++------+-----------+-------------+-----------------+
+| Id   | OrderId   | ProductId   | OrderQuantity   |
+|------+-----------+-------------+-----------------|
+| 1    | 1         | 1           | 3               |
+| 2    | 1         | 2           | 2               |
++------+-----------+-------------+-----------------+
+
 
