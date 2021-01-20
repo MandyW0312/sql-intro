@@ -222,3 +222,76 @@ Recreate your table:
 
 CREATE TABLE "EmployeesTwo" ("FullName" TEXT NOT NULL, "Salary" INT, "JobPo
  sition" TEXT, "PhoneExtension" INT, "IsPartTime" BOOL, "ParkingSpot" VARCHAR(10), "Id" SERIAL PRIMARY KEY);
+
+
+ WEEK 3 DAY 2:
+
+ Add a table called Departments:
+
+ CREATE TABLE "Departments" ("Id" SERIAL PRIMARY KEY, "DepartmentName" TEXT, "Buildin
+ g" TEXT);
+CREATE TABLE
+
++------+------------------+------------+
+| Id   | DepartmentName   | Building   |
+|------+------------------+------------|
++------+------------------+------------+
+
+Add a Foreign Key "DepartmentId" to your "Employees" table:
+
+ALTER TABLE "Employees" ADD COLUMN "DepartmentId" INTEGER NULL REFERENCES "Departmen
+ ts" ("Id");
+You're about to run a destructive command.
+Do you want to proceed? (y/n): y
+Your call!
+ALTER TABLE
+
++--------------+----------+--------------------+------------------+--------------+---------------+----------------+
+| FullName     | Salary   | JobPosition        | PhoneExtension   | IsPartTime   | ParkingSpot   | DepartmentId   |
+|--------------+----------+--------------------+------------------+--------------+---------------+----------------|
+| Manic Mandy  | 450      | Software Developer | 4444             | True         | 4             | <null>         |
+| Crazy Carol  | 700      | Firefighter        | 3213             | False        | 1             | <null>         |
+| Dingbat Dan  | 500      | Librarian          | 4321             | False        | 2             | <null>         |
+| Funky Frank  | 900      | Doctor             | 5432             | False        | 3             | <null>         |
+| Jolly Jill   | 700      | Waiter             | 8765             | True         | 5             | <null>         |
+| Tiny Tim     | 600      | Grocery Manager    | 2598             | False        | 6             | <null>         |
+| Goofy Gary   | 500      | Cook               | 7654             | True         | 76            | <null>         |
+| Stinky Stan  | 600      | Writer             | 6543             | True         | 8             | <null>         |
+| Fancy Franny | 800      | Pharmacist         | 9876             | False        | 9             | <null>         |
+| Nasty Nell   | 400      | Fitness Instructor | 1987             | True         | 10            | <null>         |
+| Lovely Lisa  | 400      | Salesperson        | 3699             | True         | 11            | <null>         |
+| Silly Susan  | 500      | Cook               | 2182             | True         | 12            | <null>         |
++--------------+----------+--------------------+------------------+--------------+---------------+----------------+
+
+Add Table called Products:
+
+CREATE TABLE "Products" ("Id" SERIAL PRIMARY KEY, "Price" DECIMAL, "Name" TEXT, "Description" TEXT, "Q
+ uantityInStock" INT);
+CREATE TABLE
+
++------+---------+--------+---------------+-------------------+
+| Id   | Price   | Name   | Description   | QuantityInStock   |
+|------+---------+--------+---------------+-------------------|
++------+---------+--------+---------------+-------------------+
+
+Add a Table called Orders:
+
+CREATE TABLE "Orders" ("Id" SERIAL PRIMARY KEY, "OrderNumber" TEXT, "DatePlaced" DATE, "Email" TEXT);
+CREATE TABLE
+
++------+---------------+--------------+---------+
+| Id   | OrderNumber   | DatePlaced   | Email   |
+|------+---------------+--------------+---------|
++------+---------------+--------------+---------+
+
+Add a table called ProductOrders:
+
+CREATE TABLE "ProductOrders" ("Id" SERIAL PRIMARY KEY, "OrderId" INTEGER REFERENCES "Orders" ("Id"), "
+ ProductId" INTEGER REFERENCES "Products" ("Id"), "OrderQuantity" INT);
+CREATE TABLE
+
++------+-----------+-------------+-----------------+
+| Id   | OrderId   | ProductId   | OrderQuantity   |
+|------+-----------+-------------+-----------------|
++------+-----------+-------------+-----------------+
+
